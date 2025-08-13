@@ -1,0 +1,21 @@
+geosuite/
+│
+├── app.py
+├── config/
+│   ├── config.yaml
+│
+├── apps/
+│   ├── capacidad_carga.py
+│   ├── settlement.py
+│   ├── ensayo_triaxial.py
+│   ├── presiones_tierra.py
+│   ├── slope_bishop.py
+│   └── dashboard_inicio.py
+│
+├── images/
+│   ├── capcarga1.png
+│   ├── ContactWSTNR.jpg
+│   ├── FLYER GTN AGO24_.jpg
+│
+├── .streamlit/
+    ├── config.toml
