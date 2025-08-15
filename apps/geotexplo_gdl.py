@@ -4,28 +4,31 @@ import streamlit as st
 
 def run():
 
-    # Configuración general
-    st.set_page_config(page_title="Presupuesto Geotécnico", page_icon="📊")
 
-    st.markdown("<center><h2>📊 Cálculadora de Exploración Geotécnica Guadalajara MEX", unsafe_allow_html=True)
+    geo_col1, geo_col2 = st.columns(2)
+    with geo_col1:
+        # Configuración general
+        st.set_page_config(page_title="Presupuesto Geotécnico", page_icon="📊")
 
-    st.markdown("<center><h3>(Version de Prueba)</h3></center>", unsafe_allow_html=True)
+        st.markdown("<center><h2>📊 Cálculadora de Exploración Geotécnica Guadalajara MEX", unsafe_allow_html=True)
 
-    st.markdown("<center><h5>Made by Geotecnia TerraNova</h5></center>", unsafe_allow_html=True)
-    st.warning("⚠️ **Descargo de Responsabilidad:** Esta aplicación es una herramienta educativa y no reemplaza la evaluación de un ingeniero geotecnico calificado. Siempre consulta a un profesional para el diseño final.")
+        st.markdown("<center><h3>(Version de Prueba)</h3></center>", unsafe_allow_html=True)
 
-    st.markdown("Para proyectos de hasta 2000 m2 y 10 niveles")
+        st.markdown("<center><h5>Made by Geotecnia TerraNova</h5></center>", unsafe_allow_html=True)
+        st.warning("⚠️ **Descargo de Responsabilidad:** Esta aplicación es una herramienta educativa y no reemplaza la evaluación de un ingeniero geotecnico calificado. Siempre consulta a un profesional para el diseño final.")
+
+        st.markdown("Para proyectos de hasta 2000 m2 y 10 niveles")
 
 
-    # Ingreso de datos del proyecto
-    st.subheader("📝 Datos del Proyecto")
-    nombre_proyecto = st.text_input("Nombre del proyecto")
-    ubicacion = st.selectbox("Ubicación", ["Guadalajara", "Zapopan"])
-    area = st.number_input("Área de construcción (m²)", min_value=1, max_value=1000)
-    niveles = st.number_input("Número de niveles", min_value=1, max_value= 10)
+        # Ingreso de datos del proyecto
+        st.subheader("📝 Datos del Proyecto")
+        nombre_proyecto = st.text_input("Nombre del proyecto")
+        ubicacion = st.selectbox("Ubicación", ["Guadalajara", "Zapopan"])
+        area = st.number_input("Área de construcción (m²)", min_value=1, max_value=1000)
+        niveles = st.number_input("Número de niveles", min_value=1, max_value= 10)
 
-    st.info("Ajusta los parámetros y haz clic en 'CALCULAR'.")
-    submit = st.button("CALCULAR", type="primary")
+        st.info("Ajusta los parámetros y haz clic en 'CALCULAR'.")
+        submit = st.button("CALCULAR", type="primary")
 
 
 
@@ -66,38 +69,38 @@ def run():
             num_sondeos = 'error'
 
 
-        
+            
+
+        with geo_col2:    
+            # Ds_cal = bou_rect_c(q, L, B, z)
+
+            #Tipo de sondeo
+            tipo_sondeo = "SPT"
+            
+            st.header("🔍 Recomendación Técnica")
+            st.subheader(f"Tipo de sondeo sugerido:  {tipo_sondeo}")
+            st.subheader(f"Número de sondeos: {num_sondeos}")
+            st.subheader(f"Profundidad estimada por sondeo: {profundidad} m ")
+
+            # Precios base
+            #precio_por_m = 1000
+            #pu_laboratorio = 500
+            #laboratorio = num_sondeos * profundidad * pu_laboratorio
+            #movilizacion = 4000
+            #informe = 5000
+            #total_sondeo = num_sondeos * profundidad * precio_por_m
+            #total = total_sondeo + laboratorio + movilizacion + informe
+
+            st.header("💰 Cotizacion Estimada")
+            st.subheader("📩Contáctenos a proyectos@geotecniaterranova.com")
+            st.subheader("✅o por Whatsapp https://wa.link/vai3cy") 
 
             
-        # Ds_cal = bou_rect_c(q, L, B, z)
 
-        #Tipo de sondeo
-        tipo_sondeo = "SPT"
-        
-        st.header("🔍 Recomendación Técnica")
-        st.write(f"Tipo de sondeo sugerido: {tipo_sondeo}")
-        st.write(f"Número de sondeos: {num_sondeos}")
-        st.write(f"Profundidad estimada por sondeo: {profundidad} m")
+            #st.subheader(f"Total sondeos: ${total_sondeo:,.0f} MXN, considerando {precio_por_m} MXN por m de profundidad")
+            #st.write(f"Laboratorio: ${laboratorio:,.0f} MXN, considerando {pu_laboratorio} MXN por m de profundidad")
+            #st.write(f"Movilizacion: ${movilizacion:,.0f} MXN")
+            #st.write(f"Informe: ${informe:,.0f} MXN")
+            #st.subheader(f"💰 Total: ${total:,.0f} MXN")
 
-        # Precios base
-        #precio_por_m = 1000
-        #pu_laboratorio = 500
-        #laboratorio = num_sondeos * profundidad * pu_laboratorio
-        #movilizacion = 4000
-        #informe = 5000
-        #total_sondeo = num_sondeos * profundidad * precio_por_m
-        #total = total_sondeo + laboratorio + movilizacion + informe
-
-        st.header("💰 Cotizacion Estimada")
-        st.write("📩Contáctenos a proyectos@geotecniaterranova.com")
-        st.write("✅o por Whatsapp https://wa.link/vai3cy") 
-
-          
-
-        #st.write(f"Total sondeos: ${total_sondeo:,.0f} MXN, considerando {precio_por_m} MXN por m de profundidad")
-        #st.write(f"Laboratorio: ${laboratorio:,.0f} MXN, considerando {pu_laboratorio} MXN por m de profundidad")
-        #st.write(f"Movilizacion: ${movilizacion:,.0f} MXN")
-        #st.write(f"Informe: ${informe:,.0f} MXN")
-        #st.subheader(f"💰 Total: ${total:,.0f} MXN")
-
-        
+            
